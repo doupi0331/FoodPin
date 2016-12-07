@@ -249,7 +249,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         })
     }
     
-    // peek
+    // peek test
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         guard let indexPath = tableView.indexPathForRow(at: location) else {
             return nil
