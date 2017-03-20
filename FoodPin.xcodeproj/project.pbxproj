@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F4A804C1E7A5FBD00D1D4C6 /* DiscoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A804B1E7A5FBD00D1D4C6 /* DiscoverTableViewController.swift */; };
+		2F4A804E1E7FA4AA00D1D4C6 /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A804D1E7FA4AA00D1D4C6 /* DiscoverTableViewCell.swift */; };
+		2FEF3D641E79056700A2F887 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FEF3D631E79056700A2F887 /* CloudKit.framework */; };
 		F421743F1B9438A50070E68E /* AddRestaurantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F421743E1B9438A50070E68E /* AddRestaurantController.swift */; };
 		F424267E1B85B2FD0019B8F0 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F424267D1B85B2FD0019B8F0 /* Restaurant.swift */; };
 		F43704C41B9AEF7000DF7786 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43704C31B9AEF7000DF7786 /* WalkthroughContentViewController.swift */; };
@@ -30,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F4A804B1E7A5FBD00D1D4C6 /* DiscoverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewController.swift; sourceTree = "<group>"; };
+		2F4A804D1E7FA4AA00D1D4C6 /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
+		2FEF3D611E79055B00A2F887 /* FoodPin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodPin.entitlements; sourceTree = "<group>"; };
+		2FEF3D631E79056700A2F887 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		F421743E1B9438A50070E68E /* AddRestaurantController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRestaurantController.swift; sourceTree = "<group>"; };
 		F424267D1B85B2FD0019B8F0 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		F43704C31B9AEF7000DF7786 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
@@ -60,12 +67,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4B05FDA1B915685006E36BE /* MapKit.framework in Frameworks */,
+				2FEF3D641E79056700A2F887 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FEF3D621E79056700A2F887 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2FEF3D631E79056700A2F887 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F4AAE2AE1B7DAC29001D8E75 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +89,7 @@
 				F4B05FD91B915685006E36BE /* MapKit.framework */,
 				F4AAE2B91B7DAC29001D8E75 /* FoodPin */,
 				F4AAE2B81B7DAC29001D8E75 /* Products */,
+				2FEF3D621E79056700A2F887 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +104,7 @@
 		F4AAE2B91B7DAC29001D8E75 /* FoodPin */ = {
 			isa = PBXGroup;
 			children = (
+				2FEF3D611E79055B00A2F887 /* FoodPin.entitlements */,
 				F4AAE2BA1B7DAC29001D8E75 /* AppDelegate.swift */,
 				F4AAE2BE1B7DAC29001D8E75 /* Main.storyboard */,
 				F44FA8291B9D7BE10075BD55 /* discover.storyboard */,
@@ -106,6 +124,8 @@
 				F43704C51B9B217700DF7786 /* WalkthroughPageViewController.swift */,
 				F4AD46151B9ED08000504A04 /* AboutTableViewController.swift */,
 				F4AD46171B9EEB7E00504A04 /* WebViewController.swift */,
+				2F4A804B1E7A5FBD00D1D4C6 /* DiscoverTableViewController.swift */,
+				2F4A804D1E7FA4AA00D1D4C6 /* DiscoverTableViewCell.swift */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";
@@ -141,11 +161,17 @@
 				TargetAttributes = {
 					F4AAE2B61B7DAC29001D8E75 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 328Y89B4S9;
+						DevelopmentTeam = 35YQ8TWVH3;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -198,11 +224,13 @@
 				F4C22D631B8EB8570006F752 /* ReviewViewController.swift in Sources */,
 				F4C566211B7EEB00008C8AEF /* RestaurantTableViewCell.swift in Sources */,
 				F43704C41B9AEF7000DF7786 /* WalkthroughContentViewController.swift in Sources */,
+				2F4A804E1E7FA4AA00D1D4C6 /* DiscoverTableViewCell.swift in Sources */,
 				F4DF0C2F1B955BD000DE0EC5 /* FoodPin.xcdatamodeld in Sources */,
 				F45820BA1B8AAC09000E50CC /* RestaurantDetailTableViewCell.swift in Sources */,
 				F4E27E811B84858F0015C354 /* RestaurantDetailViewController.swift in Sources */,
 				F4AD46181B9EEB7E00504A04 /* WebViewController.swift in Sources */,
 				F4AAE2BB1B7DAC29001D8E75 /* AppDelegate.swift in Sources */,
+				2F4A804C1E7A5FBD00D1D4C6 /* DiscoverTableViewController.swift in Sources */,
 				F466231C1B92193A0020BFD5 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,12 +363,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FoodPin/FoodPin.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 328Y89B4S9;
+				DEVELOPMENT_TEAM = 35YQ8TWVH3;
 				INFOPLIST_FILE = FoodPin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = doupi.self.FoodPin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.doupi0331.app.FoodPin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -351,12 +380,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FoodPin/FoodPin.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 328Y89B4S9;
+				DEVELOPMENT_TEAM = 35YQ8TWVH3;
 				INFOPLIST_FILE = FoodPin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = doupi.self.FoodPin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.doupi0331.app.FoodPin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

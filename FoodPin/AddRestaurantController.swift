@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CloudKit
 
 class AddRestaurantController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var imageView:UIImageView!
@@ -108,6 +109,9 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
                 print(error)
                 return
             }
+            
+            // save data to iCloud
+            saveRecordToCloud(restaurant: restaurant)
         }
         
         // Dismiss the view controller
@@ -125,5 +129,44 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
             yesButton.backgroundColor = UIColor.gray
             noButton.backgroundColor = UIColor(red: 235.0/255.0, green: 73.0/255.0, blue: 27.0/255.0, alpha: 1.0)
         }
+    }
+    
+    func saveRecordToCloud(restaurant: Restaurant) {
+        let record = CKRecord(recordType: "Restaurant")
+        record.setValue(restaurant.name, forKey: "name")
+        record.setValue(restaurant.type, forKey: "type")
+        record.setValue(restaurant.location, forKey: "location")
+        record.setValue(restaurant.phoneNumber, forKey: "phone")
+        
+        // 調整圖的大小
+        let originalImage = UIImage(data: restaurant.image!)!
+        let scalingFactor = (originalImage.size.width > 1024) ? 1024 / originalImage.size.width : 1.0
+        let scaledImage = UIImage(data: restaurant.image!, scale: scalingFactor)!
+        
+        // 將檔案寫入暫存，並取得暫存檔案路徑
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(restaurant.name)
+        do{
+            try UIImageJPEGRepresentation(scaledImage, 0.8)?.write(to: fileURL,  options: .atomicWrite)
+            
+        } catch {
+            print("Failed to save the temporary image")
+        }
+        
+        // 建立要上傳的圖
+        let imageAsset = CKAsset(fileURL: fileURL)
+        record.setValue(imageAsset, forKey: "image")
+        
+        // 上傳至iCloud
+        let publicDatabase = CKContainer.init(identifier: "iCloud.doupi0331").publicCloudDatabase
+        publicDatabase.save(record, completionHandler: {
+            (record: CKRecord?, error: Error?) -> Void in
+            do {
+               try FileManager.default.removeItem(at: fileURL)
+            } catch {
+                print("Failed to save record to the cloud: \(error.localizedDescription)")
+            }
+        })
+        
+        
     }
 }
